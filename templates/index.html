@@ -1,0 +1,31 @@
+{% extends "base_template.html" %}
+
+{% block head %}
+    <title>TODO LIST APP</title>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="content">
+        <h1>TODO LIST</h1>
+        <table>
+            <tr>
+                <th>To Do</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{todo.todo_item}}</td>
+                    <td>{{todo.date_created.date()}}</td>
+                    <td><a href="/delete/{{todo.id}}">Delete</a> / <a href="">Update</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    
+        <form action="/" method="POST">
+            <input type="text" name="todo" placeholder="Enter a todo item" id="todo">
+            <input type="submit" value="Add To Do">
+    </div>
+    
+{% endblock %}
