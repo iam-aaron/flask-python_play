@@ -24,6 +24,19 @@ def delete(id):
         return redirect('/')
     except:
         return 'There was a problem deleting that todo item'
+    
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    todo_to_update = Todo.query.get_or_404(id)
+    if request.method == 'POST':
+        todo_to_update.todo_item = request.form['todo']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue updating your todo item'
+    else:
+        return render_template('update.html', todo=todo_to_update)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

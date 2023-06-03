@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% block head %}
+    <title>TODO LIST APP</title>
+{% endblock %}
+
+{% block body %}
+    
+    <div class="content">
+        <h1>TODO LIST</h1>
+        <form action="/update/{{todo.id}}" method="POST">
+            <input type="text" name="todo" value="{{todo.todo_item}}" id="todo">
+            <input type="submit" value="Update">
+            <input type="button" value="Cancel" onclick="window.location.href='/'">
+    </div>
+    
+{% endblock %}
